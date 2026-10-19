@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://bvckrlfliyxpo"]
 
-[ext_resource type="Script" uid="uid://c114w6xs0o5eo" path="res://main.gd" id="1_wtcfe"]
-[ext_resource type="PackedScene" uid="uid://d3vsd3pdfvwxh" path="res://mob.tscn" id="2_0e48y"]
-[ext_resource type="PackedScene" uid="uid://bq2lrqwfge6fc" path="res://player.tscn" id="3_epypp"]
+[ext_resource type="Script" uid="uid://c114w6xs0o5eo" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://d3vsd3pdfvwxh" path="res://mob.tscn" id="2_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bq2lrqwfge6fc" path="res://player.tscn" id="3_7mycd"]
+[ext_resource type="PackedScene" uid="uid://blrxdtskv51gt" path="res://HUD.tscn" id="4_272bh"]
 
 [sub_resource type="Curve2D" id="Curve2D_0e48y"]
 _data = {
@@ -11,8 +12,8 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node2D" unique_id=1751472058]
-script = ExtResource("1_wtcfe")
-Mob = ExtResource("2_0e48y")
+script = ExtResource("1_1bvp3")
+Mob = ExtResource("2_lquwl")
 
 [node name="MobTimer" type="Timer" parent="." unique_id=58116067]
 wait_time = 0.5
@@ -33,37 +34,13 @@ curve = SubResource("Curve2D_0e48y")
 position = Vector2(0, 3)
 rotation = -0.0062760683
 
-[node name="Player" parent="." unique_id=645726323 instance=ExtResource("3_epypp")]
+[node name="Player" parent="." unique_id=645726323 instance=ExtResource("3_7mycd")]
+position = Vector2(224, 344)
 
-[node name="ScoreLabel" type="Label" parent="." unique_id=843895405]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 232.0
-offset_top = 184.0
-offset_right = 272.0
-offset_bottom = 229.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 32
-text = "0"
-horizontal_alignment = 1
-
-[node name="MessageLabel" type="Label" parent="." unique_id=525528021]
-offset_left = 112.0
-offset_top = 104.0
-offset_right = 386.0
-offset_bottom = 149.0
-theme_override_font_sizes/font_size = 32
-text = "Dodge the Creeps"
-
-[node name="StartButton" type="Button" parent="." unique_id=1212634927]
-offset_left = 224.0
-offset_top = 384.0
-offset_right = 280.0
-offset_bottom = 415.0
-text = "START"
+[node name="HUD" parent="." unique_id=319977130 instance=ExtResource("4_272bh")]
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

@@ -1,21 +1,24 @@
 [gd_scene format=3 uid="uid://blrxdtskv51gt"]
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=319977130]
+[ext_resource type="Script" uid="uid://cxaex47w10ypp" path="res://hud.gd" id="1_k5de2"]
+
+[node name="HUD" type="CanvasLayer" unique_id=319977130]
+script = ExtResource("1_k5de2")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=1396849064]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 232.0
-offset_top = 184.0
-offset_right = 272.0
-offset_bottom = 229.0
+offset_left = -32.0
+offset_top = 232.0
+offset_right = 8.0
+offset_bottom = 277.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 
-[node name="MessageLabel" type="Label" parent="." unique_id=2077890153]
+[node name="Message" type="Label" parent="." unique_id=2077890153]
 offset_left = 112.0
 offset_top = 104.0
 offset_right = 386.0
@@ -23,9 +26,16 @@ offset_bottom = 149.0
 theme_override_font_sizes/font_size = 32
 text = "Dodge the Creeps"
 
+[node name="MessageTimer" type="Timer" parent="." unique_id=2077890154]
+wait_time = 1.0
+one_shot = true
+
 [node name="StartButton" type="Button" parent="." unique_id=431862778]
-offset_left = 224.0
-offset_top = 384.0
-offset_right = 280.0
-offset_bottom = 415.0
+offset_left = 184.0
+offset_top = 400.0
+offset_right = 272.0
+offset_bottom = 448.0
 text = "START"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
