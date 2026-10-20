@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c114w6xs0o5eo" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://d3vsd3pdfvwxh" path="res://mob.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bq2lrqwfge6fc" path="res://player.tscn" id="3_7mycd"]
+[ext_resource type="Texture2D" uid="uid://cgudhdxpo7kgy" path="res://dodge_the_creeps_2d_assets/art/underwater.jpg" id="3_lquwl"]
 [ext_resource type="PackedScene" uid="uid://blrxdtskv51gt" path="res://HUD.tscn" id="4_272bh"]
 
 [sub_resource type="Curve2D" id="Curve2D_0e48y"]
@@ -16,7 +17,7 @@ script = ExtResource("1_1bvp3")
 Mob = ExtResource("2_lquwl")
 
 [node name="MobTimer" type="Timer" parent="." unique_id=58116067]
-wait_time = 0.5
+wait_time = 0.75
 
 [node name="ScoreTimer" type="Timer" parent="." unique_id=2075843234]
 
@@ -34,8 +35,13 @@ curve = SubResource("Curve2D_0e48y")
 position = Vector2(0, 3)
 rotation = -0.0062760683
 
+[node name="Underwater" type="Sprite2D" parent="." unique_id=75209902]
+position = Vector2(234.5, 359.99997)
+scale = Vector2(0.96999997, 1.1933334)
+texture = ExtResource("3_lquwl")
+
 [node name="Player" parent="." unique_id=645726323 instance=ExtResource("3_7mycd")]
-position = Vector2(224, 344)
+position = Vector2(248, 352)
 
 [node name="HUD" parent="." unique_id=319977130 instance=ExtResource("4_272bh")]
 
