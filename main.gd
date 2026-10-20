@@ -11,6 +11,7 @@ func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	$GameOver.play()
 
 func new_game() -> void:
 	score = 0
@@ -18,6 +19,7 @@ func new_game() -> void:
 	$HUD.show_message("Get Ready")
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
+	$Music.play()
 
 func _on_player_hit() -> void:
 	game_over()
